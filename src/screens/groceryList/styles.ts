@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     color: 'black',
     flexDirection: 'column',
   },
+  subHeader: {
+    fontSize: 25,
+    backgroundColor: 'white',
+    color: 'black',
+    flexDirection: 'row',
+  },
   container: {
     backgroundColor: 'white',
     flexDirection: 'column',
@@ -33,7 +39,15 @@ const styles = StyleSheet.create({
     height: 80,
     backgroundColor: 'white',
     flexDirection: 'row',
-    marginLeft: 10,
+    marginLeft: 0,
+  },
+  addHeader: {
+    fontSize: 18,
+    fontWeight: 'normal',
+    backgroundColor: 'white',
+    color: 'black',
+    flexDirection: 'row',
+    marginRight: 10,
   },
   textinputContainer: {
     width: '55%',
@@ -72,6 +86,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  addText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'black',
+  },
   count: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -82,15 +101,15 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: 'gray',
+    borderColor: '#D4D4D4',
     color: 'black',
   },
   button: {
     width: '95%',
     height: '80%',
     margin: 5,
-    backgroundColor: 'gray',
-    borderColor: 'gray',
+    backgroundColor: '#ECECEC',
+    borderColor: 'black',
     padding: 10,
     flexDirection: 'row',
   },
@@ -105,7 +124,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 10,
-    backgroundColor: 'gray',
+    borderColor: 'black',
+    backgroundColor: '#D4D4D4',
+  },
+  buttonIcon: {
+    color: 'gray',
+    marginLeft: 2,
+    marginRight: 2,
   },
 });
 

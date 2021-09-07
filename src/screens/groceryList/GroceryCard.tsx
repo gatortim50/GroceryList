@@ -1,31 +1,35 @@
 import React, {useState, useEffect} from 'react';
 import {
-  Button,
   Pressable,
   View,
-  TouchableOpacity,
   TextInput,
   Text,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './styles';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faPlusCircle, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 
 const GroceryListScreen = props => {
-  const [active, setActive] = useState(true);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  console.log('card props:', props);
+  const [toggleCheckBox, setToggleCheckBox] = useState(false); // delete item
   const [count, setCount] = useState(0);
   const [text, onChangeText] = useState(props.item.title);
 
-  const buttonStyle = {
-    color: active ? 'yellow' : 'gray',
-    fontStyle: active ? 'normal' : 'italic',
-    fontSize: active ? 30 : 15,
-    fontWeight: active ? 'bold' : 'normal',
-    borderColor: active ? 'yellow' : 'gray',
-    borderWidth: active ? 2 : 1,
-  };
-  console.log('active: ', active);
-  console.log('buttonStyle: ', buttonStyle);
+  useEffect(() => {
+    console.log('You clicked: ', count);
+    
+    if (count < 0) {
+      setCount(0);
+    }
+    if (toggleCheckBox) {
+      console.log('removeItem: ', props.item.title);
+      props.removeItem(props.item.id);
+    }
+    
+  }, [count, toggleCheckBox]); // Only re-run the effect if count changes
+
+
   return (
     <View style={styles.cardContainer}>
       <View style={styles.rowContainer}>
@@ -53,20 +57,24 @@ const GroceryListScreen = props => {
           <Text style={styles.count}>{count}</Text>
         </View>
 
-      <View style={styles.buttonContainer}>
-        <Pressable
-          style={styles.countButton}
-          onPress={() => setCount(count + 1)}>
-          <Text style={styles.text}>+</Text>
-        </Pressable>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Pressable
-          style={styles.countButton}
-          onPress={() => setCount(count - 1)}>
-          <Text style={styles.text}>"-"</Text>
-        </Pressable>
-      </View>
+        <View style={styles.buttonContainer}>
+          <Pressable onPress={() => setCount(count + 1)}>
+            <FontAwesomeIcon
+              style={styles.buttonIcon}
+              icon={faPlusCircle}
+              size={22}
+            />
+          </Pressable>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Pressable onPress={() => setCount(count - 1)}>
+            <FontAwesomeIcon
+              style={styles.buttonIcon}
+              icon={faMinusCircle}
+              size={22}
+            />
+          </Pressable>
+        </View>
       </View>
     </View>
   );
